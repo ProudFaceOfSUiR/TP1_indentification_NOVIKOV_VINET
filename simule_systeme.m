@@ -35,7 +35,8 @@ G2 = minreal(G2);
 G3 = minreal(G3);
 
 %% Positions : reponse indicielle directe de G1, G2, G3
-[alpha, t] = step(G1, t);
+% [alpha, t] = step(G1, t);
+alpha = step(G1, t);
 beta       = step(G2, t);
 gamma      = step(G3, t);
 
