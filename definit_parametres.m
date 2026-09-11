@@ -23,11 +23,11 @@ F7 = m_3*s^2 + b_2*s + k_2
 G1 = 1 / (F1 - (F2 * F3)/(F4 - F5*F6 / F7))
 G2 = -F3 * G1 / (F4 - F5 * F6 / F7)
 G3 = -F6 / F7 * G2
-
-step(G1)
-step(G2)
-step(G3)
-
-step(G1*s)
-step(G2*s)
-step(G3*s)
+% 
+% step(G1)
+% step(G2)
+% step(G3)
+% 
+% step(G1*s)
+% step(G2*s)
+% step(G3*s)
