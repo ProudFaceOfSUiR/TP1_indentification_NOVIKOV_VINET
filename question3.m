@@ -1,3 +1,8 @@
+definit_parametres;
+k_1 = 5000;
+b_1 = 400;
+simule_systeme;
+
 alpha_ = 0;
 beta_ = 0;
 gamma_ = 0;
@@ -34,15 +39,15 @@ for i = 1:N
     idx = indexes(i);
 
     % Extract values for the current index
-    alpha_ = alpha(idx);
-    beta_ = beta(idx);
-    gamma_ = gamma(idx);
-    alpha_dot = vit_alpha(idx);
-    beta_dot = vit_beta(idx);
-    gamma_dot = vit_gamma(idx);
-    alpha_ddot = acc_alpha(idx);
-    beta_ddot = acc_beta(idx);
-    gamma_ddot = acc_gamma(idx);
+    alpha_ = 0.00001*round(alpha(idx)*100000) ;
+    beta_ = 0.00001*round(beta(idx)*100000) ;
+    gamma_ = 0.00001*round(gamma(idx)*100000) ;
+    alpha_dot =0.001*round(vit_alpha(idx)*1000) ;
+    beta_dot = 0.001*round(vit_beta(idx)*1000) ;
+    gamma_dot = 0.001*round(vit_gamma(idx)*1000) ;
+    alpha_ddot = 0.001*round(acc_alpha(idx)*1000) ;
+    beta_ddot = 0.001*round(acc_beta(idx)*1000) ;
+    gamma_ddot = 0.001*round(acc_gamma(idx)*1000) ;
 
     % Construct the A matrix for the current index
     A = [
