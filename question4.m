@@ -62,23 +62,38 @@ for i = 1:N
     gamma_ddot_bruit(i) = 0.001 * round(acc_gamma(idx) * 1000);
 end
 
+u = 3;
+
+% Apply filtfilt to each variable
+alpha_bruit = filtfilt([1 u - 1], u, alpha_bruit);
+beta_bruit = filtfilt([1 u - 1], u, beta_bruit);
+gamma_bruit = filtfilt([1 u - 1], u, gamma_bruit);
+
+alpha_dot_bruit = filtfilt([1 u - 1], u, alpha_dot_bruit);
+beta_dot_bruit = filtfilt([1 u - 1], u, beta_dot_bruit);
+gamma_dot_bruit = filtfilt([1 u - 1], u, gamma_dot_bruit);
+
+alpha_ddot_bruit = filtfilt([1 u - 1], u, alpha_ddot_bruit);
+beta_ddot_bruit = filtfilt([1 u - 1], u, beta_ddot_bruit);
+gamma_ddot_bruit = filtfilt([1 u - 1], u, gamma_ddot_bruit);
 
 
-alpha_bruit = filtfilt([1 u-1], u, x)
 
 for i = 1:N
     idx = indexes(i);
 
     % Extract values for the current index
-    alpha_ = 0.00001*round(alpha(idx)*100000) ;
-    beta_ = 0.00001*round(beta(idx)*100000) ;
-    gamma_ = 0.00001*round(gamma(idx)*100000) ;
-    alpha_dot =0.001*round(vit_alpha(idx)*1000) ;
-    beta_dot = 0.001*round(vit_beta(idx)*1000) ;
-    gamma_dot = 0.001*round(vit_gamma(idx)*1000) ;
-    alpha_ddot = 0.001*round(acc_alpha(idx)*1000) ;
-    beta_ddot = 0.001*round(acc_beta(idx)*1000) ;
-    gamma_ddot = 0.001*round(acc_gamma(idx)*1000) ;
+    alpha_ = alpha_bruit(idx);
+    beta_ = beta_bruit(idx);
+    gamma_ = gamma_bruit(idx);
+
+    alpha_dot = alpha_dot_bruit(idx);
+    beta_dot = beta_dot_bruit(idx);
+    gamma_dot = gamma_dot_bruit(idx);
+
+    alpha_ddot = alpha_ddot_bruit(idx);
+    beta_ddot = beta_ddot_bruit(idx);
+    gamma_ddot = gamma_ddot_bruit(idx);
 
     % Construct the A matrix for the current index
     A = [
