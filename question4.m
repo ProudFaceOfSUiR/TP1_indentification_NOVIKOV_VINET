@@ -35,6 +35,37 @@ N = length(indexes);
 A_hat = [];
 y_hat = [];
 
+alpha_bruit = zeros(1, N);
+beta_bruit = zeros(1, N);
+gamma_bruit = zeros(1, N);
+alpha_dot_bruit = zeros(1, N);
+beta_dot_bruit = zeros(1, N);
+gamma_dot_bruit = zeros(1, N);
+alpha_ddot_bruit = zeros(1, N);
+beta_ddot_bruit = zeros(1, N);
+gamma_ddot_bruit = zeros(1, N);
+
+for i = 1:N
+    idx = indexes(i);
+
+    % Extract and round values for the current index
+    alpha_bruit(i) = 0.00001 * round(alpha(idx) * 100000);
+    beta_bruit(i) = 0.00001 * round(beta(idx) * 100000);
+    gamma_bruit(i) = 0.00001 * round(gamma(idx) * 100000);
+
+    alpha_dot_bruit(i) = 0.001 * round(vit_alpha(idx) * 1000);
+    beta_dot_bruit(i) = 0.001 * round(vit_beta(idx) * 1000);
+    gamma_dot_bruit(i) = 0.001 * round(vit_gamma(idx) * 1000);
+
+    alpha_ddot_bruit(i) = 0.001 * round(acc_alpha(idx) * 1000);
+    beta_ddot_bruit(i) = 0.001 * round(acc_beta(idx) * 1000);
+    gamma_ddot_bruit(i) = 0.001 * round(acc_gamma(idx) * 1000);
+end
+
+
+
+alpha_bruit = filtfilt([1 u-1], u, x)
+
 for i = 1:N
     idx = indexes(i);
 
