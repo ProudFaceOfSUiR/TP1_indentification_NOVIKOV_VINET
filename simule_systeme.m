@@ -3,17 +3,17 @@
 % definit_parametres;   % charge m1,m2,m3,b0,b1,b2,k0,k1,k2
 s = tf('s');
 
-F1 = (m_1 * s^2 +k_0 + k_1 + b_1 * s + b_0 * s)
-F2 = k_1 + b_1 * s
-F3 = F2;
-F4 = k_1 + b_1 * s + k_2 + b_2 * s + m_2 * s^2
-F5 = b_2 * s + k_2
-F6 = -(b_2*s + k_2)
-F7 = m_3*s^2 + b_2*s + k_2
-
-G1 = 1 / (F1 - (F2 * F3)/(F4 - F5*F6 / F7))
-G2 = -F3 * G1 / (F4 - F5 * F6 / F7)
-G3 = -F6 / F7 * G2
+% F1 = (m_1 * s^2 +k_0 + k_1 + b_1 * s + b_0 * s)
+% F2 = k_1 + b_1 * s
+% F3 = F2;
+% F4 = k_1 + b_1 * s + k_2 + b_2 * s + m_2 * s^2
+% F5 = b_2 * s + k_2
+% F6 = -(b_2*s + k_2)
+% F7 = m_3*s^2 + b_2*s + k_2
+% 
+% G1 = 1 / (F1 - (F2 * F3)/(F4 - F5*F6 / F7))
+% G2 = -F3 * G1 / (F4 - F5 * F6 / F7)
+% G3 = -F6 / F7 * G2
 % 
 
 %% Vecteur des instants de mesure
